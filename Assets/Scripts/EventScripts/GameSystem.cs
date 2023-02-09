@@ -40,7 +40,9 @@ namespace EventScripts
         public bool JoinRoomAction = false;
         public bool StartRoomAction = false;
 
-        [System.SerializeField]
+        public GameObject cardPrefab;
+        public Image deckPanel;
+        [SerializeField]
         public List<Card> deck = new List<Card>();
 
         public IEnumerator UnloadScene()
@@ -111,12 +113,25 @@ namespace EventScripts
             StartCoroutine(enumerator);
         }
 
+        public void RedrawCards()
+        {
+            for (int i = 0; i < deckPanel.transform.childCount; i++)
+            {
+                DestroyImmediate(deckPanel.transform.GetChild(i));
+            }
+            foreach (Card card in deck)
+            {
+                var obj = InstatniateUI(cardPrefab, deckPanel.transform);
+                obj.GetComponent<CardUI>().card = card;
+            }
+        }
+
         void Start()
         {
             RoomListPanel.SetActive(false);
             LobbyPanel.SetActive(false);
             GamePanel.SetActive(false);
-            NetManager.Create(this, "ws://127.0.0.1:99", 88, "�mer Faruk Nehir");
+            NetManager.Create(this, "ws://127.0.0.1:99", 88, "Ömer Faruk Nehir");
             NetManager.StartConnection(OnDataSent);
             RoomListTitleAnimator.SetBool("Exit", false);
             RoomListPanel.SetActive(true);
@@ -242,6 +257,11 @@ namespace EventScripts
                 }
 
                 canListPlayers = false;
+            }
+
+            if (NetManager.GameStarted)
+            {
+                RedrawCards();
             }
         }
 

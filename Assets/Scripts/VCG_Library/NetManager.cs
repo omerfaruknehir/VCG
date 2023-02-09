@@ -11,6 +11,7 @@ using WebSocketSharp;
 using EventScripts;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 namespace VCG_Library
 {
@@ -29,6 +30,7 @@ namespace VCG_Library
         public static string PlayerRoomName;
 
         public static bool JoinedRoom { get; private set; } = false;
+        public static bool GameStarted { get; private set; } = false;
 
         public static bool Connected { get => GameServer != null && GameServer.IsAlive && ConnectAccepted; }
         private static bool ConnectAccepted = false;
@@ -220,6 +222,7 @@ namespace VCG_Library
             else if (commandName == "StartRoom")
             {
                 Debug.Log("Room Started!");
+                GameStarted = true;
                 OnRoomStarted();
             }
 
@@ -235,6 +238,7 @@ namespace VCG_Library
                     Deck.Add((string)arg);
                 }
                 GS.deck = Deck;
+                GS.RedrawCards();
                 Debug.Log("Cards Setted! Info: [" + s + "]");
             }
 
@@ -265,6 +269,9 @@ namespace VCG_Library
             Debug.LogWarning("Connection Closed, Reason: " + e.Reason);
             Debug.Log(e.Code);
             ConnectAccepted = false;
+            GameStarted = true;
+            JoinedRoom = false;
+            GS.QuitJoinedRoom();
             if (e.Code != 1000)//CloseStatusCode.Abnormal)
             {
                 Debug.Log("Starting to trying to connecting to server! " + Connected);

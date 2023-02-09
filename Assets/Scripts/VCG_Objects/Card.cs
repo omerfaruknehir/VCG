@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
+using Random = System.Random;
 
 namespace VCG_Objects
 {
@@ -19,10 +21,10 @@ namespace VCG_Objects
     [Serializable]
     public class Card
     {
-        [Serializable]
+        [SerializeField]
         public string Type;
-        [System.SerializeField]
-        public int Figure
+        [SerializeField]
+        public int Figure;
 
         public static readonly string[] Types = new string[] { "blue", "green", "orange", "yellow", "powered" };
         public static readonly int ColoredFigures = 13;

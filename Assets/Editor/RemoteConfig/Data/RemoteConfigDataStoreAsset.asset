@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: '[]'
-  _rsLastCachedKeyList: '[]'
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"4c85829c-a859-4cb8-843b-7ec273caadc3\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"Setting0\",\r\n      \"type\": \"json\",\r\n     
+    \"schemaId\": null,\r\n      \"value\": {\r\n        \"s\": \"Deneme\"\r\n     
+    }\r\n    }\r\n  }\r\n]"
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"4c85829c-a859-4cb8-843b-7ec273caadc3\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"Setting0\",\r\n      \"type\": \"json\",\r\n     
+    \"schemaId\": null,\r\n      \"value\": {\r\n        \"s\": \"Deneme\"\r\n     
+    }\r\n    }\r\n  }\r\n]"
   _environments: "[\r\n  {\r\n    \"projectId\": \"c9bea943-ff69-4712-beb8-1116b4ef5580\",\r\n   
     \"name\": \"production\",\r\n    \"id\": \"3dd34efd-6c45-4758-b755-c9c67be23ee7\",\r\n   
     \"isDefault\": true,\r\n    \"createdAt\": \"2022-09-08T09:09:06Z\",\r\n    \"updatedAt\":
