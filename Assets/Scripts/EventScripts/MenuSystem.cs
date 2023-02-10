@@ -1,3 +1,4 @@
+using StaticScripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,7 +32,12 @@ namespace EventScripts
 
         void Init()
         {
-            StaticScripts.UIManager.ConfirmBox("Deneme", (bool data) => Debug.Log(data));
+
+        }
+
+        public void PlayMenu()
+        {
+            UIManager.ConfirmBox("Are you ready for play?", (accepted) => { if (accepted) { StartMultiplayerGame(); } });
         }
 
         public void Start()

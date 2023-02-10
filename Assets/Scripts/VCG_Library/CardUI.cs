@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Scripting;
 using UnityEngine.UI;
 using VCG_Objects;
 
 [ExecuteAlways]
-[RequireComponent(typeof(Image))]
+[RequireComponent(typeof(Image), typeof(Button))]
 public class CardUI : MonoBehaviour
 {
     [SerializeField]
     public Card card;
+    public System.Action<Card> selectAction;
 
     public Image centerSprite;
     public Image topSprite;
@@ -82,7 +84,7 @@ public class CardUI : MonoBehaviour
                 bottomText.gameObject.SetActive(false);
             }
         }
-
+        GetComponent<Button>().onClick.AddListener(() => { selectAction.Invoke(card); });
     }
     void Start()
     {

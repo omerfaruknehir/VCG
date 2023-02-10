@@ -12,6 +12,7 @@ using EventScripts;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using System.Linq;
 
 namespace VCG_Library
 {
@@ -90,11 +91,14 @@ namespace VCG_Library
 
         private static void OnListRooms(dynamic[] args)
         {
-            if (args[0] != "")
+            var lst = args.ToList();
+            while (lst.Remove(null))
             {
-                GS.canListRooms = true;
-                GS.listRoomsArgs = args;
+
             }
+            args = lst.ToArray();
+            GS.canListRooms = true;
+            GS.listRoomsArgs = args;
         }
 
         private static void OnListPlayers(dynamic[] args)
@@ -145,6 +149,7 @@ namespace VCG_Library
                     Debug.LogWarning("Connection: ".Bold() + args[0]);
                     SendData("ListRooms", 20);
                     SendData("GetCookie<<sessionID");
+                    GS.RelistRooms();
                     ConnectAccepted = true;
                 }
                 else
@@ -227,6 +232,18 @@ namespace VCG_Library
                 OnRoomStarted();
             }
 
+            else if (commandName == "UseCard")
+            {
+                GS.RemoveCard(args[0]);
+            }
+
+            else if (commandName == "CardPlayed")
+            {
+                Debug.Log("Room Started!");
+                GameStarted = true;
+                OnRoomStarted();
+            }
+
             else if (commandName == "SetCards")
             {
                 Deck = new List<Card>();
@@ -287,7 +304,6 @@ namespace VCG_Library
             Debug.Log(e.Code);
             JoinedRoom = false;
             GS.canListRooms = true;
-            GS.QuitJoinedRoom();
             GS.OpenRooms();
             GS.RelistRooms();
         }

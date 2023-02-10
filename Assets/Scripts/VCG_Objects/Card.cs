@@ -61,6 +61,11 @@ namespace VCG_Objects
             return Type + ":" + Figure;
         }
 
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
         public static implicit operator string(Card card)
         {
             return card.ToString();

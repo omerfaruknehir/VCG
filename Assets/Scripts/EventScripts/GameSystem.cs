@@ -31,7 +31,20 @@ namespace EventScripts
 
         public Animator PanelController;
 
-        public bool canListRooms = false;
+        public bool canListRooms
+        {
+            get
+            {
+                return CanListRooms;
+            }
+            set
+            {
+                CanListRooms = value;
+            }
+        }
+
+        public bool CanListRooms = false;
+
         public dynamic[] listRoomsArgs;
 
         public bool canListPlayers = false;
@@ -61,6 +74,16 @@ namespace EventScripts
         public void StartJoinedRoom()
         {
             NetManager.SendDataToRoom("StartRoom<<");
+        }
+
+        public void UseCard(int cardIndex)
+        {
+            NetManager.SendData("UseCard<<" + cardIndex);
+        }
+        
+        public void RemoveCard(int cardIndex)
+        {
+            Destroy(deckPanel.transform.GetChild(cardIndex).gameObject);
         }
 
         public void QuitJoinedRoom()
@@ -95,7 +118,7 @@ namespace EventScripts
 
         public void CreateRoom(string roomName)
         {
-            NetManager.SendData("CreateRoom", new string[] { roomName, "true", "15" });
+            NetManager.SendData("CreateRoom", new string[] { roomName, "true", "7" });
             RelistRooms();
         }
 
@@ -124,6 +147,7 @@ namespace EventScripts
             {
                 var obj = InstatniateUI(cardPrefab, deckPanel.transform);
                 obj.GetComponent<CardUI>().card = card;
+                obj.GetComponent<CardUI>().selectAction = (card) => { UseCard(deck.IndexOf(card)); };
             }
         }
 
