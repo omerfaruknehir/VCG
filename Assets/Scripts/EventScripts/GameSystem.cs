@@ -43,7 +43,8 @@ namespace EventScripts
         public GameObject cardPrefab;
         public Image deckPanel;
         [SerializeField]
-        public List<Card> deck = new List<Card>();
+        private List<Card> Deck = new List<Card>();
+        public List<Card> deck { get => Deck; set { this.Deck = value; if (NetManager.GameStarted) { RedrawCards(); } } }
 
         public IEnumerator UnloadScene()
         {
@@ -64,8 +65,8 @@ namespace EventScripts
 
         public void QuitJoinedRoom()
         {
-            NetManager.SendData("Quit<<Room");
-            NetManager.CloseConnection();
+            NetManager.SendDataToRoom("Quit<<");
+            OpenRooms();
         }
 
         public void StartMultiplayerGame()
@@ -105,7 +106,7 @@ namespace EventScripts
 
         void OnDataSent(object sender, MessageEventArgs e)
         {
-            
+
         }
 
         public void StartEnumerator(IEnumerator enumerator)
@@ -117,7 +118,7 @@ namespace EventScripts
         {
             for (int i = 0; i < deckPanel.transform.childCount; i++)
             {
-                DestroyImmediate(deckPanel.transform.GetChild(i));
+                Destroy(deckPanel.transform.GetChild(i).gameObject);
             }
             foreach (Card card in deck)
             {
@@ -146,7 +147,15 @@ namespace EventScripts
             StartCoroutine(SetActiveTimeOut(LobbyPanel, false, 1));
             StartCoroutine(SetActiveTimeOut(RoomListPanel, true, 1));
 
+            RelistRooms();
+
             RoomListTitleAnimator.SetBool("Exit", false);
+        }
+
+        public void OpenMenu()
+        {
+            SceneManager.LoadScene(0);
+            SceneManager.UnloadSceneAsync(1);
         }
 
         IEnumerator SetActiveTimeOut(GameObject obj, bool tf, float seconds)
@@ -157,7 +166,7 @@ namespace EventScripts
 
         public void AddCard(Card card)
         {
-            
+
         }
 
         void Update()
@@ -257,11 +266,6 @@ namespace EventScripts
                 }
 
                 canListPlayers = false;
-            }
-
-            if (NetManager.GameStarted)
-            {
-                RedrawCards();
             }
         }
 

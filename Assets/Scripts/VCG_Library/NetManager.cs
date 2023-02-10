@@ -120,6 +120,7 @@ namespace VCG_Library
         private static void StartRoom()
         {
             GS.JoinRoomAction = true;
+            JoinedRoom = true;
             //SendDataToRoom("ListPlayers<<");
         }
 
@@ -260,7 +261,8 @@ namespace VCG_Library
             {
                 yield return new WaitForSeconds(1f);
                 Debug.Log("Trying to connect!");
-                StartConnection();
+                var ct = new Thread(() => StartConnection());
+                ct.Start();
             }
         }
 
@@ -271,7 +273,6 @@ namespace VCG_Library
             ConnectAccepted = false;
             GameStarted = true;
             JoinedRoom = false;
-            GS.QuitJoinedRoom();
             if (e.Code != 1000)//CloseStatusCode.Abnormal)
             {
                 Debug.Log("Starting to trying to connecting to server! " + Connected);
@@ -285,7 +286,10 @@ namespace VCG_Library
             Debug.LogWarning(e.Reason);
             Debug.Log(e.Code);
             JoinedRoom = false;
+            GS.canListRooms = true;
+            GS.QuitJoinedRoom();
             GS.OpenRooms();
+            GS.RelistRooms();
         }
 
         //public void SendStringData(string data)
