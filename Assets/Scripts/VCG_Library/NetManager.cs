@@ -13,6 +13,7 @@ using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
 using System.Linq;
+using StaticScripts;
 
 namespace VCG_Library
 {
@@ -103,11 +104,14 @@ namespace VCG_Library
 
         private static void OnListPlayers(dynamic[] args)
         {
-            if (args[0] != "")
+            var lst = args.ToList();
+            while (lst.Remove("") || lst.Remove(null))
             {
-                GS.canListPlayers = true;
-                GS.listPlayersArgs = args;
+
             }
+            args = lst.ToArray();
+            GS.canListPlayers = true;
+            GS.listPlayersArgs = args;
         }
 
         private static void OnJoinedRoom(string PlayerRoomName)
@@ -235,13 +239,12 @@ namespace VCG_Library
             else if (commandName == "UseCard")
             {
                 GS.RemoveCard(args[0]);
+                GS.RedrawCards();
             }
 
             else if (commandName == "CardPlayed")
             {
-                Debug.Log("Room Started!");
-                GameStarted = true;
-                OnRoomStarted();
+                Debug.Log("Card Played: " + args[0] + args[1]);
             }
 
             else if (commandName == "SetCards")

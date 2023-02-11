@@ -1,3 +1,4 @@
+using StaticScripts;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -78,7 +79,7 @@ namespace EventScripts
 
         public void UseCard(int cardIndex)
         {
-            NetManager.SendData("UseCard<<" + cardIndex);
+            NetManager.SendDataToRoom("UseCard<<" + cardIndex);
         }
         
         public void RemoveCard(int cardIndex)
@@ -99,7 +100,7 @@ namespace EventScripts
             StartCoroutine(UnloadScene());
         }
 
-        public GameObject InstatniateUI(GameObject original, Transform parent)
+        public GameObject InstantiateUI(GameObject original, Transform parent)
         {
             GameObject obj = Instantiate(original, parent);
             obj.transform.localScale = Vector3.one;
@@ -145,7 +146,7 @@ namespace EventScripts
             }
             foreach (Card card in deck)
             {
-                var obj = InstatniateUI(cardPrefab, deckPanel.transform);
+                var obj = InstantiateUI(cardPrefab, deckPanel.transform);
                 obj.GetComponent<CardUI>().card = card;
                 obj.GetComponent<CardUI>().selectAction = (card) => { UseCard(deck.IndexOf(card)); };
             }
@@ -240,7 +241,7 @@ namespace EventScripts
                     string roomName = roomData[1];
                     string roomPlayerNum = roomData[2];
                     string roomMaxNum = roomData[3];
-                    GameObject roomItem = InstatniateUI(RoomItem, RoomList.transform);
+                    GameObject roomItem = InstantiateUI(RoomItem, RoomList.transform);
 
                     roomItem.GetComponent<Button>().onClick.AddListener(() => JoinRoom(roomKey));
                     TextMeshProUGUI[] tmpItems = roomItem.GetComponentsInChildren<TextMeshProUGUI>();
@@ -252,7 +253,7 @@ namespace EventScripts
 
                 if (i == 0)
                 {
-                    GameObject noRoomItem = InstatniateUI(NoRoomItem, RoomList.transform);
+                    GameObject noRoomItem = InstantiateUI(NoRoomItem, RoomList.transform);
                 }
 
                 canListRooms = false;
@@ -269,7 +270,7 @@ namespace EventScripts
                 int i = 0;
                 foreach (string playerName in listPlayersArgs)
                 {
-                    GameObject playerItem = InstatniateUI(PlayerItem, PlayerList.transform);
+                    GameObject playerItem = InstantiateUI(PlayerItem, PlayerList.transform);
 
                     playerItem.GetComponent<Button>().onClick.AddListener(() => KickPlayer(playerName));
 
