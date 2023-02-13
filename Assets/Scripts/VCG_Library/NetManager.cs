@@ -41,6 +41,8 @@ namespace VCG_Library
 
         public static List<Card> Deck;
 
+        static Color32 defaultColor;
+
         public static void Create(GameSystem gs, string host, int port, string playerName)
         {
             GS = gs;
@@ -123,6 +125,7 @@ namespace VCG_Library
         private static void OnRoomStarted()
         {
             GS.StartRoomAction = true;
+            GS.LastPileCard.gameObject.SetActive(false);
         }
 
         private static void StartRoom()
@@ -174,7 +177,10 @@ namespace VCG_Library
                 arg = arg.Remove(arg.Length - 1);
                 string errorHeader = arg.Split(":")[0];
                 string errorMessage = arg.Split(":")[1];
-                Debug.LogError("Error:\n".Bold().Color("red") + errorHeader.Bold() + ": " + errorMessage);
+                if (Application.isEditor)
+                {
+                    Debug.LogError("Error:\n".Bold().Color("red") + errorHeader.Bold() + ": " + errorMessage);
+                }
             }
 
             else if (commandName == "GetCookie" && args.Length == 2 && args[0] is string && args[1] is string)
@@ -234,17 +240,30 @@ namespace VCG_Library
                 Debug.Log("Room Started!");
                 GameStarted = true;
                 OnRoomStarted();
+                GS.deckPanel.color = defaultColor;
             }
 
-            else if (commandName == "UseCard")
+            else if (commandName == "Play" && args.Length == 1 && args[0] is string && args[0] == "Round")
             {
+                defaultColor = GS.deckPanel.color;
+                GS.deckPanel.color = new Color32(30, 80, 30, 180);
+            }
+
+            else if (commandName == "RemoveCard")
+            {
+                GS.deckPanel.color = defaultColor;
                 GS.RemoveCard(args[0]);
                 GS.RedrawCards();
             }
 
             else if (commandName == "CardPlayed")
             {
-                Debug.Log("Card Played: " + args[0] + args[1]);
+                GS.SetLastPileCard(args[0]);
+            }
+
+            else if (commandName == "Pass" && args.Length == 1 && args[0] is string && args[0] == "Round")
+            {
+                GS.deckPanel.color = defaultColor;
             }
 
             else if (commandName == "SetCards")

@@ -35,6 +35,11 @@ namespace EventScripts
 
         }
 
+        public void QuitApplication()
+        {
+            Application.Quit();
+        }
+
         public void PlayMenu()
         {
             UIManager.ConfirmBox("Are you ready for play?", (accepted) => { if (accepted) { StartMultiplayerGame(); } });

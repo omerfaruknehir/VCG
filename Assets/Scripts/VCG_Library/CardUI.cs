@@ -86,6 +86,7 @@ public class CardUI : MonoBehaviour
                     bottomText.gameObject.SetActive(false);
                 }
             }
+            GetComponent<Button>().onClick.RemoveAllListeners();
             GetComponent<Button>().onClick.AddListener(() => { selectAction.Invoke(card); });
         }
     }
@@ -154,6 +155,7 @@ public class CardUI : MonoBehaviour
                 bottomText.gameObject.SetActive(false);
             }
         }
-        GetComponent<Button>().onClick.AddListener(() => { selectAction.Invoke(card); });
+        GetComponent<Button>().onClick.RemoveAllListeners();
+        GetComponent<Button>().onClick.AddListener(() => { selectAction(card); });
     }
 }

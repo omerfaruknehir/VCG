@@ -57,6 +57,7 @@ namespace EventScripts
         public GameObject cardPrefab;
         public Image deckPanel;
         [SerializeField]
+        public CardUI LastPileCard;
         private List<Card> Deck = new List<Card>();
         public List<Card> deck { get => Deck; set { this.Deck = value; if (NetManager.GameStarted) { RedrawCards(); } } }
 
@@ -79,11 +80,18 @@ namespace EventScripts
 
         public void UseCard(int cardIndex)
         {
-            NetManager.SendDataToRoom("UseCard<<" + cardIndex);
+            NetManager.SendDataToRoom("UseCard", cardIndex);
+        }
+
+        public void SetLastPileCard(Card card)
+        {
+            LastPileCard.card = card;
+            LastPileCard.gameObject.SetActive(true);
         }
         
         public void RemoveCard(int cardIndex)
         {
+            Deck.RemoveAt(cardIndex);
             Destroy(deckPanel.transform.GetChild(cardIndex).gameObject);
         }
 
