@@ -10,16 +10,21 @@ public class ListRoomsLoop : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(2);
-            if (NetManager.Connected)
+            if (NetManager.Connected && !NetManager.JoinedRoom)
             {
                 NetManager.SendData("ListRooms", 20);
             }
         }
     }
 
-    void Start()
+    public void StartLoop()
     {
         StartCoroutine(listRoomLoop());
+    }
+
+    void Start()
+    {
+        StartLoop();
     }
 
     // Update is called once per frame

@@ -1,3 +1,4 @@
+using Assets.Scripts.VCG_Library.Enums;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

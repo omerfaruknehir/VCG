@@ -95,7 +95,7 @@ namespace VCG_Library
         private static void OnListRooms(dynamic[] args)
         {
             var lst = args.ToList();
-            while (lst.Remove(null))
+            while (lst.Remove(null) || lst.Remove(""))
             {
 
             }
@@ -249,6 +249,16 @@ namespace VCG_Library
                 GS.deckPanel.color = new Color32(30, 80, 30, 180);
             }
 
+            else if (commandName == "Pass" && args.Length == 1 && args[0] is string && args[0] == "Round")
+            {
+                GS.deckPanel.color = defaultColor;
+            }
+
+            else if (commandName == "Round" && args.Length == 1 && args[0] is string)
+            {
+                GS.RoundPlayerName = args[0];
+            }
+
             else if (commandName == "RemoveCard")
             {
                 GS.deckPanel.color = defaultColor;
@@ -259,11 +269,6 @@ namespace VCG_Library
             else if (commandName == "CardPlayed")
             {
                 GS.SetLastPileCard(args[0]);
-            }
-
-            else if (commandName == "Pass" && args.Length == 1 && args[0] is string && args[0] == "Round")
-            {
-                GS.deckPanel.color = defaultColor;
             }
 
             else if (commandName == "SetCards")

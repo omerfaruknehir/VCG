@@ -1,6 +1,7 @@
 using StaticScripts;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,6 +19,7 @@ namespace EventScripts
         public GameObject RoomItem;
         public GameObject NoRoomItem;
         public GameObject RoomList;
+        public GameObject cardPrefab;
 
         public GameObject PlayerItem;
         public GameObject PlayerList;
@@ -31,6 +33,13 @@ namespace EventScripts
         public Animator GameTitleAnimator;
 
         public Animator PanelController;
+        public Image deckPanel;
+        [SerializeField]
+        public CardUI LastPileCard;
+        private List<Card> Deck = new List<Card>();
+        public List<Card> deck { get => Deck; set { this.Deck = value; if (NetManager.GameStarted) { RedrawCards(); } } }
+
+        public string RoundPlayerName;
 
         public bool canListRooms
         {
@@ -45,7 +54,6 @@ namespace EventScripts
         }
 
         public bool CanListRooms = false;
-
         public dynamic[] listRoomsArgs;
 
         public bool canListPlayers = false;
@@ -53,13 +61,6 @@ namespace EventScripts
 
         public bool JoinRoomAction = false;
         public bool StartRoomAction = false;
-
-        public GameObject cardPrefab;
-        public Image deckPanel;
-        [SerializeField]
-        public CardUI LastPileCard;
-        private List<Card> Deck = new List<Card>();
-        public List<Card> deck { get => Deck; set { this.Deck = value; if (NetManager.GameStarted) { RedrawCards(); } } }
 
         public IEnumerator UnloadScene()
         {
@@ -88,7 +89,7 @@ namespace EventScripts
             LastPileCard.card = card;
             LastPileCard.gameObject.SetActive(true);
         }
-        
+
         public void RemoveCard(int cardIndex)
         {
             Deck.RemoveAt(cardIndex);
@@ -241,27 +242,30 @@ namespace EventScripts
                     Destroy(RoomList.transform.GetChild(c).gameObject);
                 }
 
-                int i = 0;
-                foreach (string roomText in listRoomsArgs)
+                var lraL = listRoomsArgs.ToList();
+
+                while (lraL.Remove("") || lraL.Remove(null)) { }
+
+                if (lraL.Count == 0)
                 {
-                    string[] roomData = roomText.Split(":");
-                    string roomKey = roomData[0];
-                    string roomName = roomData[1];
-                    string roomPlayerNum = roomData[2];
-                    string roomMaxNum = roomData[3];
-                    GameObject roomItem = InstantiateUI(RoomItem, RoomList.transform);
-
-                    roomItem.GetComponent<Button>().onClick.AddListener(() => JoinRoom(roomKey));
-                    TextMeshProUGUI[] tmpItems = roomItem.GetComponentsInChildren<TextMeshProUGUI>();
-                    tmpItems[0].text = roomName;
-                    tmpItems[1].text = roomPlayerNum + "/" + roomMaxNum;
-
-                    i++;
+                    InstantiateUI(NoRoomItem, RoomList.transform);
                 }
-
-                if (i == 0)
+                else
                 {
-                    GameObject noRoomItem = InstantiateUI(NoRoomItem, RoomList.transform);
+                    foreach (string roomText in lraL)
+                    {
+                        string[] roomData = roomText.Split(":");
+                        string roomKey = roomData[0];
+                        string roomName = roomData[1];
+                        string roomPlayerNum = roomData[2];
+                        string roomMaxNum = roomData[3];
+                        GameObject roomItem = InstantiateUI(RoomItem, RoomList.transform);
+
+                        roomItem.GetComponent<Button>().onClick.AddListener(() => JoinRoom(roomKey));
+                        TextMeshProUGUI[] tmpItems = roomItem.GetComponentsInChildren<TextMeshProUGUI>();
+                        tmpItems[0].text = roomName;
+                        tmpItems[1].text = roomPlayerNum + "/" + roomMaxNum;
+                    }
                 }
 
                 canListRooms = false;
