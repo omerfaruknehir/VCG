@@ -14,8 +14,6 @@ namespace EventScripts
 {
     public class GameSystem : MonoBehaviour
     {
-        public GameObject unloadingScreen;
-
         public GameObject RoomItem;
         public GameObject NoRoomItem;
         public GameObject RoomList;
@@ -23,6 +21,7 @@ namespace EventScripts
 
         public GameObject PlayerItem;
         public GameObject PlayerList;
+        public GameObject PlayerListOnGame;
 
         public GameObject RoomListPanel;
         public GameObject LobbyPanel;
@@ -62,18 +61,6 @@ namespace EventScripts
         public bool JoinRoomAction = false;
         public bool StartRoomAction = false;
 
-        public IEnumerator UnloadScene()
-        {
-            Scene scene = SceneManager.GetSceneByName("MainMenu");
-            while (!scene.isLoaded)
-            {
-                yield return new WaitForEndOfFrame();
-            }
-            unloadingScreen.SetActive(false);
-            SceneManager.UnloadSceneAsync("GameScene");
-            yield return null;
-        }
-
         public void StartJoinedRoom()
         {
             NetManager.SendDataToRoom("StartRoom<<");
@@ -100,13 +87,6 @@ namespace EventScripts
         {
             NetManager.SendDataToRoom("Quit<<");
             OpenRooms();
-        }
-
-        public void StartMultiplayerGame()
-        {
-            unloadingScreen.SetActive(true);
-            SceneManager.LoadSceneAsync("MainMenu");
-            StartCoroutine(UnloadScene());
         }
 
         public GameObject InstantiateUI(GameObject original, Transform parent)
@@ -192,6 +172,59 @@ namespace EventScripts
             SceneManager.UnloadSceneAsync(1);
         }
 
+        public void ListPlayers(GameObject listTo)
+        {
+            for (int c = 0; c < listTo.transform.childCount; c++)
+            {
+                Destroy(listTo.transform.GetChild(c).gameObject);
+            }
+
+            int i = 0;
+            foreach (string playerName in listPlayersArgs)
+            {
+                GameObject playerItem = InstantiateUI(PlayerItem, listTo.transform);
+
+                playerItem.GetComponent<Button>().onClick.AddListener(() => KickPlayer(playerName));
+
+                if (NetManager.GameStarted)
+                {
+                    playerItem.GetComponent<Button>().interactable = false;
+                    ColorBlock ncb = playerItem.GetComponent<Button>().colors;
+                    ncb.colorMultiplier = playerItem.GetComponent<Button>().colors.colorMultiplier;
+                    ncb.disabledColor = new Color32(60, 60, 60, 100);
+                    playerItem.GetComponent<Button>().colors = ncb;
+                }
+
+                Debug.Log(playerName + ", " + NetManager.PlayerRoomName);
+                if (playerName == RoundPlayerName)
+                {
+                    ColorBlock ncb = playerItem.GetComponent<Button>().colors;
+                    ncb.colorMultiplier = playerItem.GetComponent<Button>().colors.colorMultiplier;
+                    ncb.disabledColor = new Color32(80, 250, 100, 100);
+                    playerItem.GetComponent<Button>().colors = ncb;
+                    playerItem.GetComponent<Button>().interactable = false;
+                }
+                else if (playerName == NetManager.PlayerRoomName)
+                {
+                    ColorBlock ncb = new ColorBlock();
+                    ncb.colorMultiplier = playerItem.GetComponent<Button>().colors.colorMultiplier;
+                    ncb.disabledColor = new Color32(100, 100, 100, 100);
+                    playerItem.GetComponent<Button>().colors = ncb;
+                    playerItem.GetComponent<Button>().interactable = false;
+                }
+
+                if (true)
+                {
+
+                }
+
+                TextMeshProUGUI textE = playerItem.GetComponentInChildren<TextMeshProUGUI>();
+                textE.text = playerName;
+
+                i++;
+            }
+        }
+
         IEnumerator SetActiveTimeOut(GameObject obj, bool tf, float seconds)
         {
             yield return new WaitForSeconds(seconds);
@@ -273,34 +306,11 @@ namespace EventScripts
 
             if (canListPlayers && NetManager.JoinedRoom)
             {
-                Debug.Log("Warn");
-                for (int c = 0; c < PlayerList.transform.childCount; c++)
-                {
-                    Destroy(PlayerList.transform.GetChild(c).gameObject);
-                }
+                if (NetManager.GameStarted)
 
-                int i = 0;
-                foreach (string playerName in listPlayersArgs)
-                {
-                    GameObject playerItem = InstantiateUI(PlayerItem, PlayerList.transform);
-
-                    playerItem.GetComponent<Button>().onClick.AddListener(() => KickPlayer(playerName));
-
-                    Debug.Log(playerName + ", " + NetManager.PlayerRoomName);
-                    if (playerName == NetManager.PlayerRoomName)
-                    {
-                        ColorBlock ncb = new ColorBlock();
-                        ncb.colorMultiplier = playerItem.GetComponent<Button>().colors.colorMultiplier;
-                        ncb.disabledColor = new Color32(100, 100, 100, 100);
-                        playerItem.GetComponent<Button>().colors = ncb;
-                        playerItem.GetComponent<Button>().interactable = false;
-                    }
-
-                    TextMeshProUGUI textE = playerItem.GetComponentInChildren<TextMeshProUGUI>();
-                    textE.text = playerName;
-
-                    i++;
-                }
+                    ListPlayers(PlayerListOnGame);
+                else
+                    ListPlayers(PlayerList);
 
                 canListPlayers = false;
             }

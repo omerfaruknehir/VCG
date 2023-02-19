@@ -493,8 +493,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2125757109}
   m_HandleRect: {fileID: 2125757108}
   m_Direction: 0
-  m_Value: 0.5
-  m_Size: 0.63492066
+  m_Value: 0
+  m_Size: 0.9426345
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -707,9 +707,9 @@ RectTransform:
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 5, y: 0}
+  m_SizeDelta: {x: 5, y: -19.99}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &192592805
 MonoBehaviour:
@@ -754,8 +754,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1780485066}
   m_HandleRect: {fileID: 1780485065}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.61876565
+  m_Value: 0
+  m_Size: 0.9999957
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -969,9 +969,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -4.99, y: -19.99}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &219461599
 MonoBehaviour:
@@ -1059,13 +1059,14 @@ RectTransform:
   m_Children:
   - {fileID: 985135725}
   - {fileID: 1098873170}
+  - {fileID: 691157670}
   m_Father: {fileID: 1553627619}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -8.5, y: -8}
-  m_SizeDelta: {x: 356, y: 90}
+  m_AnchoredPosition: {x: -14, y: -8}
+  m_SizeDelta: {x: 12, y: 140}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &219697178
 MonoBehaviour:
@@ -1141,7 +1142,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2fd27543ae64e34db18f0f4e130faf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orentation: 1
+  orentation: 2
+  minWidth: 0
+  minHeight: 0
 --- !u!114 &219697182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1302,6 +1305,7 @@ GameObject:
   - component: {fileID: 275768146}
   - component: {fileID: 275768145}
   - component: {fileID: 275768147}
+  - component: {fileID: 275768148}
   m_Layer: 5
   m_Name: List
   m_TagString: Untagged
@@ -1324,10 +1328,10 @@ RectTransform:
   m_Father: {fileID: 966616149}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2000, y: 370}
+  m_SizeDelta: {x: 200, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &275768145
 MonoBehaviour:
@@ -1342,7 +1346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 0.49803922}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1380,8 +1384,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
-    m_Right: 0
+    m_Left: -100
+    m_Right: -100
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
@@ -1391,6 +1395,21 @@ MonoBehaviour:
   m_Spacing: {x: 40, y: 20}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &275768148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275768143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2fd27543ae64e34db18f0f4e130faf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orentation: 1
+  minWidth: 200
+  minHeight: 200
 --- !u!1 &380490524
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,6 +1422,7 @@ GameObject:
   - component: {fileID: 380490528}
   - component: {fileID: 380490527}
   - component: {fileID: 380490526}
+  - component: {fileID: 380490529}
   m_Layer: 5
   m_Name: List
   m_TagString: Untagged
@@ -1429,7 +1449,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 640}
+  m_SizeDelta: {x: 0, y: 80}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &380490526
 MonoBehaviour:
@@ -1446,14 +1466,14 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 25
-    m_Bottom: 0
+    m_Top: 20
+    m_Bottom: 20
   m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 1
-  m_CellSize: {x: 432, y: 40}
+  m_CellSize: {x: 430, y: 40}
   m_Spacing: {x: 40, y: 20}
-  m_Constraint: 1
+  m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &380490527
 MonoBehaviour:
@@ -1468,7 +1488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 0.49803922}
+  m_Color: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1493,6 +1513,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380490524}
   m_CullTransparentMesh: 1
+--- !u!114 &380490529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380490524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2fd27543ae64e34db18f0f4e130faf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orentation: 2
+  minWidth: 200
+  minHeight: 80
 --- !u!1 &496118579
 GameObject:
   m_ObjectHideFlags: 0
@@ -1943,9 +1978,9 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 20}
+  m_SizeDelta: {x: -4.99, y: 20}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &596093942
 MonoBehaviour:
@@ -2416,6 +2451,97 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 667406606}
   m_CullTransparentMesh: 1
+--- !u!1 &691157669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 691157670}
+  - component: {fileID: 691157673}
+  - component: {fileID: 691157672}
+  - component: {fileID: 691157671}
+  m_Layer: 5
+  m_Name: Item (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &691157670
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691157669}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 912344826}
+  m_Father: {fileID: 219697177}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &691157671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691157669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
+--- !u!114 &691157672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691157669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 13c665e607d05e94894f02507f1ace94, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 15
+--- !u!222 &691157673
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691157669}
+  m_CullTransparentMesh: 1
 --- !u!1 &700602636
 GameObject:
   m_ObjectHideFlags: 0
@@ -2425,6 +2551,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 700602637}
+  - component: {fileID: 700602638}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -2434,7 +2561,7 @@ GameObject:
   m_IsActive: 1
 --- !u!224 &700602637
 RectTransform:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 8
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2450,9 +2577,24 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 640}
+  m_AnchoredPosition: {x: 0, y: 0.000005570579}
+  m_SizeDelta: {x: 0, y: 80}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &700602638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700602636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 877e8cd903c7be04bb3045cc5393fb19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orentation: 2
+  startPadding: 0
+  endPadding: 0
 --- !u!1 &814673491
 GameObject:
   m_ObjectHideFlags: 0
@@ -2471,7 +2613,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &814673492
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2659,6 +2801,141 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -21, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &912344825
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 912344826}
+  - component: {fileID: 912344828}
+  - component: {fileID: 912344827}
+  m_Layer: 5
+  m_Name: Item
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &912344826
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912344825}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 691157670}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -2.5, y: 0}
+  m_SizeDelta: {x: -25, y: -10}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &912344827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912344825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: A
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 17
+  m_fontSizeBase: 26
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 9.25
+  m_fontSizeMax: 17
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &912344828
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912344825}
+  m_CullTransparentMesh: 1
 --- !u!1 &966616148
 GameObject:
   m_ObjectHideFlags: 0
@@ -2668,6 +2945,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 966616149}
+  - component: {fileID: 966616150}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -2677,7 +2955,7 @@ GameObject:
   m_IsActive: 1
 --- !u!224 &966616149
 RectTransform:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 8
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2693,9 +2971,24 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1680, y: 0}
+  m_AnchoredPosition: {x: 0.00012207031, y: 0}
+  m_SizeDelta: {x: 200, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &966616150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966616148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 877e8cd903c7be04bb3045cc5393fb19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orentation: 1
+  startPadding: 0
+  endPadding: 0
 --- !u!1 &985135724
 GameObject:
   m_ObjectHideFlags: 0
@@ -3191,8 +3484,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 109771572}
   m_HandleRect: {fileID: 109771571}
   m_Direction: 2
-  m_Value: 1.0000032
-  m_Size: 0.80630934
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3344,216 +3637,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140868811}
   m_CullTransparentMesh: 1
---- !u!213 &1151455002
-Sprite:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Rect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 512
-    height: 512
-  m_Offset: {x: 0, y: 0}
-  m_Border: {x: 0, y: 0, z: 0, w: 0}
-  m_PixelsToUnits: 100
-  m_Pivot: {x: 0.5, y: 0.5}
-  m_Extrude: 0
-  m_IsPolygon: 0
-  m_AtlasName: 
-  m_PackingTag: 
-  m_RenderDataKey:
-    00000000000000000000000000000000: 0
-  m_AtlasTags: []
-  m_SpriteAtlas: {fileID: 0}
-  m_RD:
-    serializedVersion: 3
-    texture: {fileID: 2800000, guid: 370a1ad44d0988949853228df7ce18f8, type: 3}
-    alphaTexture: {fileID: 0}
-    secondaryTextures: []
-    m_SubMeshes:
-    - serializedVersion: 2
-      firstByte: 0
-      indexCount: 108
-      topology: 0
-      baseVertex: 0
-      firstVertex: 0
-      vertexCount: 38
-      localAABB:
-        m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 0, y: 0, z: 0}
-    m_IndexBuffer: 0b000c002400250024000c002300050021000600210005002200210006002000210022001f00210020001e001f0020001d001f001e001c001d001e001b001d001c001a001b001c0019001b001a00180019001a001700190018001600170018001500170016001400150016001300150014001100130014001200130011001000120011000e00100011000f0010000e000d000f000e000a000d000e000b000d000a000c000b000a00090001000700020007000100080007000200040007000800050007000400060005000400030000000100020001000000
-    m_VertexData:
-      serializedVersion: 3
-      m_VertexCount: 38
-      m_Channels:
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 3
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 1
-        offset: 0
-        format: 0
-        dimension: 2
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      m_DataSize: 768
-      _typelessdata: 85ebd1bf0ad7134000000000d7a3d0bfe17a14c000000000d7a3d0bfe17a14400000000085ebd1bf0ad713c000000000cdccccbf48e11a4000000000713dcabf1f851bc000000000713dcabf1f851b4000000000cdccccbf48e11ac000000000d7a3d0bf6666164000000000d7a3d0bf666616c000000000d7a3d03f6666164000000000d7a3d03fe17a14c000000000d7a3d03fe17a144000000000d7a3d03f666616c000000000cdcccc3f48e11a4000000000cdcccc3f48e11ac000000000713dca3f1f851bc0000000000000c03fae47214000000000713dca3ff6281cc0000000000000c03fae4721c00000000052b8be3fae4721400000000052b8be3fae4721c000000000a470bd3f5c8f224000000000a470bd3f5c8f22c0000000003d0ab73f0ad72340000000003d0ab73f0ad723c0000000003d0ab7bf0ad72340000000003d0ab7bf0ad723c000000000a470bdbf5c8f224000000000a470bdbf5c8f22c00000000052b8bebfae4721400000000052b8bebfae4721c0000000000000c0bfae472140000000000000c0bfae4721c000000000713dcabff6281c4000000000713dcabff6281cc00000000085ebd13f0ad713c00000000085ebd13f0ad7134000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    m_Bindpose: []
-    textureRect:
-      serializedVersion: 2
-      x: 92.07612
-      y: 0
-      width: 327.84778
-      height: 512
-    textureRectOffset: {x: 92.07612, y: 0}
-    atlasRectOffset: {x: -1, y: -1}
-    settingsRaw: 64
-    uvTransform: {x: 100, y: 256, z: 100, w: 256}
-    downscaleMultiplier: 1
-  m_AtlasRD:
-    serializedVersion: 3
-    texture: {fileID: 2800000, guid: 370a1ad44d0988949853228df7ce18f8, type: 3}
-    alphaTexture: {fileID: 0}
-    secondaryTextures: []
-    m_SubMeshes:
-    - serializedVersion: 2
-      firstByte: 0
-      indexCount: 108
-      topology: 0
-      baseVertex: 0
-      firstVertex: 0
-      vertexCount: 38
-      localAABB:
-        m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 0, y: 0, z: 0}
-    m_IndexBuffer: 0b000c002400250024000c002300050021000600210005002200210006002000210022001f00210020001e001f0020001d001f001e001c001d001e001b001d001c001a001b001c0019001b001a00180019001a001700190018001600170018001500170016001400150016001300150014001100130014001200130011001000120011000e00100011000f0010000e000d000f000e000a000d000e000b000d000a000c000b000a00090001000700020007000100080007000200040007000800050007000400060005000400030000000100020001000000
-    m_VertexData:
-      serializedVersion: 3
-      m_VertexCount: 38
-      m_Channels:
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 3
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 1
-        offset: 0
-        format: 0
-        dimension: 2
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      - stream: 0
-        offset: 0
-        format: 0
-        dimension: 0
-      m_DataSize: 768
-      _typelessdata: 85ebd1bf0ad7134000000000d7a3d0bfe17a14c000000000d7a3d0bfe17a14400000000085ebd1bf0ad713c000000000cdccccbf48e11a4000000000713dcabf1f851bc000000000713dcabf1f851b4000000000cdccccbf48e11ac000000000d7a3d0bf6666164000000000d7a3d0bf666616c000000000d7a3d03f6666164000000000d7a3d03fe17a14c000000000d7a3d03fe17a144000000000d7a3d03f666616c000000000cdcccc3f48e11a4000000000cdcccc3f48e11ac000000000713dca3f1f851bc0000000000000c03fae47214000000000713dca3ff6281cc0000000000000c03fae4721c00000000052b8be3fae4721400000000052b8be3fae4721c000000000a470bd3f5c8f224000000000a470bd3f5c8f22c0000000003d0ab73f0ad72340000000003d0ab73f0ad723c0000000003d0ab7bf0ad72340000000003d0ab7bf0ad723c000000000a470bdbf5c8f224000000000a470bdbf5c8f22c00000000052b8bebfae4721400000000052b8bebfae4721c0000000000000c0bfae472140000000000000c0bfae4721c000000000713dcabff6281c4000000000713dcabff6281cc00000000085ebd13f0ad713c00000000085ebd13f0ad7134000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    m_Bindpose: []
-    textureRect:
-      serializedVersion: 2
-      x: 92.07612
-      y: 0
-      width: 327.84778
-      height: 512
-    textureRectOffset: {x: 92.07612, y: 0}
-    atlasRectOffset: {x: -1, y: -1}
-    settingsRaw: 64
-    uvTransform: {x: 100, y: 256, z: 100, w: 256}
-    downscaleMultiplier: 1
-  m_PhysicsShape: []
-  m_Bones: []
-  m_SpriteID: 
 --- !u!1001 &1186548587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3856,7 +3939,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4336,13 +4419,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b028e18e4ec2b4cb05938e36e350ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unloadingScreen: {fileID: 0}
   RoomItem: {fileID: 4694333843356686852, guid: c7ec9dc6234207945899fded59a9ce91, type: 3}
   NoRoomItem: {fileID: 6329901591073383289, guid: 9b0a20d13f05f9d47b38b48ef2b4cf9e, type: 3}
   RoomList: {fileID: 380490524}
   cardPrefab: {fileID: 453466662422193331, guid: 2570d93196e639045bcddfbd1d9cb125, type: 3}
   PlayerItem: {fileID: 8643140089077332196, guid: c14874afe79e45b4c97e2dc17f5e6238, type: 3}
   PlayerList: {fileID: 275768143}
+  PlayerListOnGame: {fileID: 219697176}
   RoomListPanel: {fileID: 814673491}
   LobbyPanel: {fileID: 1236136426}
   GamePanel: {fileID: 1655752936}
@@ -4468,10 +4551,10 @@ RectTransform:
   m_Father: {fileID: 380490525}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 511.43713, y: -40}
+  m_SizeDelta: {x: 430, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1475406978
 MonoBehaviour:
@@ -4555,6 +4638,216 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475406976}
   m_CullTransparentMesh: 1
+--- !u!213 &1482466992
+Sprite:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 512
+    height: 512
+  m_Offset: {x: 0, y: 0}
+  m_Border: {x: 0, y: 0, z: 0, w: 0}
+  m_PixelsToUnits: 100
+  m_Pivot: {x: 0.5, y: 0.5}
+  m_Extrude: 0
+  m_IsPolygon: 0
+  m_AtlasName: 
+  m_PackingTag: 
+  m_RenderDataKey:
+    00000000000000000000000000000000: 0
+  m_AtlasTags: []
+  m_SpriteAtlas: {fileID: 0}
+  m_RD:
+    serializedVersion: 3
+    texture: {fileID: 2800000, guid: 370a1ad44d0988949853228df7ce18f8, type: 3}
+    alphaTexture: {fileID: 0}
+    secondaryTextures: []
+    m_SubMeshes:
+    - serializedVersion: 2
+      firstByte: 0
+      indexCount: 108
+      topology: 0
+      baseVertex: 0
+      firstVertex: 0
+      vertexCount: 38
+      localAABB:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 0, y: 0, z: 0}
+    m_IndexBuffer: 0b000c002400250024000c002300050021000600210005002200210006002000210022001f00210020001e001f0020001d001f001e001c001d001e001b001d001c001a001b001c0019001b001a00180019001a001700190018001600170018001500170016001400150016001300150014001100130014001200130011001000120011000e00100011000f0010000e000d000f000e000a000d000e000b000d000a000c000b000a00090001000700020007000100080007000200040007000800050007000400060005000400030000000100020001000000
+    m_VertexData:
+      serializedVersion: 3
+      m_VertexCount: 38
+      m_Channels:
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 3
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 1
+        offset: 0
+        format: 0
+        dimension: 2
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      m_DataSize: 768
+      _typelessdata: 85ebd1bf0ad7134000000000d7a3d0bfe17a14c000000000d7a3d0bfe17a14400000000085ebd1bf0ad713c000000000cdccccbf48e11a4000000000713dcabf1f851bc000000000713dcabf1f851b4000000000cdccccbf48e11ac000000000d7a3d0bf6666164000000000d7a3d0bf666616c000000000d7a3d03f6666164000000000d7a3d03fe17a14c000000000d7a3d03fe17a144000000000d7a3d03f666616c000000000cdcccc3f48e11a4000000000cdcccc3f48e11ac000000000713dca3f1f851bc0000000000000c03fae47214000000000713dca3ff6281cc0000000000000c03fae4721c00000000052b8be3fae4721400000000052b8be3fae4721c000000000a470bd3f5c8f224000000000a470bd3f5c8f22c0000000003d0ab73f0ad72340000000003d0ab73f0ad723c0000000003d0ab7bf0ad72340000000003d0ab7bf0ad723c000000000a470bdbf5c8f224000000000a470bdbf5c8f22c00000000052b8bebfae4721400000000052b8bebfae4721c0000000000000c0bfae472140000000000000c0bfae4721c000000000713dcabff6281c4000000000713dcabff6281cc00000000085ebd13f0ad713c00000000085ebd13f0ad7134000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    m_Bindpose: []
+    textureRect:
+      serializedVersion: 2
+      x: 92.07612
+      y: 0
+      width: 327.84778
+      height: 512
+    textureRectOffset: {x: 92.07612, y: 0}
+    atlasRectOffset: {x: -1, y: -1}
+    settingsRaw: 64
+    uvTransform: {x: 100, y: 256, z: 100, w: 256}
+    downscaleMultiplier: 1
+  m_AtlasRD:
+    serializedVersion: 3
+    texture: {fileID: 2800000, guid: 370a1ad44d0988949853228df7ce18f8, type: 3}
+    alphaTexture: {fileID: 0}
+    secondaryTextures: []
+    m_SubMeshes:
+    - serializedVersion: 2
+      firstByte: 0
+      indexCount: 108
+      topology: 0
+      baseVertex: 0
+      firstVertex: 0
+      vertexCount: 38
+      localAABB:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 0, y: 0, z: 0}
+    m_IndexBuffer: 0b000c002400250024000c002300050021000600210005002200210006002000210022001f00210020001e001f0020001d001f001e001c001d001e001b001d001c001a001b001c0019001b001a00180019001a001700190018001600170018001500170016001400150016001300150014001100130014001200130011001000120011000e00100011000f0010000e000d000f000e000a000d000e000b000d000a000c000b000a00090001000700020007000100080007000200040007000800050007000400060005000400030000000100020001000000
+    m_VertexData:
+      serializedVersion: 3
+      m_VertexCount: 38
+      m_Channels:
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 3
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 1
+        offset: 0
+        format: 0
+        dimension: 2
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      m_DataSize: 768
+      _typelessdata: 85ebd1bf0ad7134000000000d7a3d0bfe17a14c000000000d7a3d0bfe17a14400000000085ebd1bf0ad713c000000000cdccccbf48e11a4000000000713dcabf1f851bc000000000713dcabf1f851b4000000000cdccccbf48e11ac000000000d7a3d0bf6666164000000000d7a3d0bf666616c000000000d7a3d03f6666164000000000d7a3d03fe17a14c000000000d7a3d03fe17a144000000000d7a3d03f666616c000000000cdcccc3f48e11a4000000000cdcccc3f48e11ac000000000713dca3f1f851bc0000000000000c03fae47214000000000713dca3ff6281cc0000000000000c03fae4721c00000000052b8be3fae4721400000000052b8be3fae4721c000000000a470bd3f5c8f224000000000a470bd3f5c8f22c0000000003d0ab73f0ad72340000000003d0ab73f0ad723c0000000003d0ab7bf0ad72340000000003d0ab7bf0ad723c000000000a470bdbf5c8f224000000000a470bdbf5c8f22c00000000052b8bebfae4721400000000052b8bebfae4721c0000000000000c0bfae472140000000000000c0bfae4721c000000000713dcabff6281c4000000000713dcabff6281cc00000000085ebd13f0ad713c00000000085ebd13f0ad7134000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    m_Bindpose: []
+    textureRect:
+      serializedVersion: 2
+      x: 92.07612
+      y: 0
+      width: 327.84778
+      height: 512
+    textureRectOffset: {x: 92.07612, y: 0}
+    atlasRectOffset: {x: -1, y: -1}
+    settingsRaw: 64
+    uvTransform: {x: 100, y: 256, z: 100, w: 256}
+    downscaleMultiplier: 1
+  m_PhysicsShape: []
+  m_Bones: []
+  m_SpriteID: 
 --- !u!1 &1520598633
 GameObject:
   m_ObjectHideFlags: 0
@@ -4799,6 +5092,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1553627619}
+  - component: {fileID: 1553627620}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -4808,7 +5102,7 @@ GameObject:
   m_IsActive: 1
 --- !u!224 &1553627619
 RectTransform:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 8
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4824,9 +5118,24 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.5, y: -0.00025839533}
-  m_SizeDelta: {x: -15, y: 396.87}
+  m_AnchoredPosition: {x: 7.5, y: -0.0009785321}
+  m_SizeDelta: {x: -15, y: 158}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &1553627620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553627618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 877e8cd903c7be04bb3045cc5393fb19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orentation: 2
+  startPadding: 0
+  endPadding: 18
 --- !u!1 &1573965331
 GameObject:
   m_ObjectHideFlags: 0
@@ -5907,7 +6216,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.9999957}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6912,8 +7221,8 @@ RectTransform:
   m_Father: {fileID: 1574943683}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.18253967, y: 0}
-  m_AnchorMax: {x: 0.8174603, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.9426345, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}

@@ -257,6 +257,7 @@ namespace VCG_Library
             else if (commandName == "Round" && args.Length == 1 && args[0] is string)
             {
                 GS.RoundPlayerName = args[0];
+                GS.canListPlayers = true;
             }
 
             else if (commandName == "RemoveCard")

@@ -20,15 +20,37 @@ public class AutoScale : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GetComponent<RectTransform>().hideFlags = HideFlags.NotEditable;
+
+        float minX = 0; float maxX = 0;
+        float minY = 0; float maxY = 0;
+        foreach (var child in transform.GetComponentsInChildren<RectTransform>())
+        {
+            if (child.transform.parent != transform)
+            {
+                continue;
+            }
+
+            if (child.anchoredPosition.x - (1 - child.pivot.x) * child.sizeDelta.x < minX)
+                minX = child.anchoredPosition.x - (1 - child.pivot.x) * child.sizeDelta.x;
+            if (child.anchoredPosition.x + child.pivot.x * child.sizeDelta.x > maxX)
+                maxX = child.anchoredPosition.x + child.pivot.x * child.sizeDelta.x;
+
+            if (child.anchoredPosition.y - (1 - child.pivot.y) * child.sizeDelta.y < minY)
+                minY = child.anchoredPosition.y - (1 - child.pivot.y) * child.sizeDelta.y;
+            if (child.anchoredPosition.y + child.pivot.y * child.sizeDelta.y > maxY)
+                maxY = child.anchoredPosition.y + child.pivot.y * child.sizeDelta.y;
+        }
+
         if (orentation == Orentation.Height)
         {
             var l = this.GetComponent<RectTransform>().sizeDelta;
-            this.GetComponent<RectTransform>().sizeDelta = new Vector2(l.x, GetComponent<GridLayoutGroup>().cellSize.y * transform.childCount + GetComponent<GridLayoutGroup>().spacing.y * (transform.childCount - 1));
+            this.GetComponent<RectTransform>().sizeDelta = new Vector2(l.x, (startPadding + endPadding) + maxY - minY);
         }
         else if (orentation == Orentation.Width)
         {
             var l = this.GetComponent<RectTransform>().sizeDelta;
-            this.GetComponent<RectTransform>().sizeDelta = new Vector2(GetComponent<GridLayoutGroup>().cellSize.x * transform.childCount + GetComponent<GridLayoutGroup>().spacing.x * (transform.childCount - 1), l.y);
+            this.GetComponent<RectTransform>().sizeDelta = new Vector2((startPadding + endPadding) + maxX - minX, l.y);
         }
     }
 }
